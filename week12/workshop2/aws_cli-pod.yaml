@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cli
+  labels:   
+    app: cli
+    week: lab4
+spec:
+  containers:
+    - image: amazon/aws-cli
+      name: aws-cli
+      volumeMounts:
+        - name: cli
+          mountPath: /var/cli
+    - image: 'nginx:alpine'
+      name: web-server
+      volumeMounts:
+        - name: cli
+          mountPath: /usr/local/bin/
+          readOnly: true
+      ports:
+        - containerPort: 80
+          protocol: TCP
+  volumes:
+    - name: cli
+      emptyDir: {}
+ 

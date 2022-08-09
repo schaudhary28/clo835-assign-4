@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-deployment
+  labels:
+    app: aws
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aws
+  template:
+    metadata:
+      labels:
+        app: aws
+    spec:
+      containers:
+      - name: aws
+        image: amazon/aws-cli:latest
+        ports:
+        - containerPort: 80
+      restartPolicy: "Never"

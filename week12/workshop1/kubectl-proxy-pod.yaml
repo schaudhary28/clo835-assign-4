@@ -5,7 +5,7 @@ metadata:
    labels:
      week: "week11"
 spec:
-  serviceAccountName: clo835
+  serviceAccountName: simran
   containers:
   - name: ambassador
     image: luksa/kubectl-proxy
